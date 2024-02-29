@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body class="hidden">
+    <div class="container  main-container">
+        <div class="container header-container">
+            <h1 class="text-center">HORDE JOB MANAGER</h1>
+            <h4 class="text-center">LISTA LAVORI</h4>
+        </div>
+        <div class="container body-container">
+            <div class="container body-sub-container-1">
+                <ul class="menu">
+                    <li class="menu_button"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalAggiungiLavoro"><i class="fa-solid fa-circle-plus"></i> AGGIUNGI LAVORO</button></li>
+                    <li class="menu-item lista_lavori active">LISTA LAVORI</li>
+                    <li class="menu-item marker_pubblici">MARKER PUBBLICI</li>
+                    <li class="menu-item marker_pubblici">MARKER PRIVATI</li>
+                    <li class="menu-item blip_pubblici">BLIP PUBBLICI</li>
+                    <li class="menu-item blip_pubblici">BLIP PRIVATI</li>
+                    <li class="menu-item territori">TERRITORI</li>
+                    <li class="menu-item esci"><i class="fa-regular fa-circle-xmark"></i> ESCI</li>
+                </ul>
+            </div>
+            <div class="container body-sub-container-2">
+                <div class="row text-white header">
+                    <div id="header_1" class="col-1 text-center id">#</div>
+                    <div id="header_2" class="col">NOME LAVORO</div>
+                    <div id="header_3" class="col">ID LAVORO</div>
+                    <div id="header_4" class="col">N. GRADI</div>
+                    <div id="header_5" class="col"></div>
+                </div>
+            </div>
+      </div>
+    </div>
+
+    <!-- Modal - Aggiungi Lavoro -->
+    <div class="modal fade" id="modalAggiungiLavoro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="AggiungiLavoro" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">AGGIUNGI LAVORO</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="input-group mb-3">
+                <span class="input-group-text">NAME</span>
+                <input id="newJobName" type="text" class="form-control" placeholder="Nome Lavoro" aria-label="Nome Lavoro" aria-describedby="newJobName">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">ID</span>
+                <input id="newJobID" type="text" class="form-control" placeholder="ID Lavoro" aria-label="ID Lavoro" aria-describedby="newJobID">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-target="modalAggiungiLavoro">Chiudi</button>
+          <button type="button" class="btn btn-danger" id="AggiungiLavoro" data-bs-dismiss="modal" data-bs-target="modalAggiungiLavoro">Aggiungi Lavoro</button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Modal - Modifica Lavoro -->
+    <div class="modal fade" id="modalModificaLavoro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ModificaLavoro" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">MODIFICA LAVORO</h1>
+            <button type="button" id="closeModificaLavoro" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body modal-body-modifica-lavoro">
+              <div class="input-group mb-3">
+                  <span class="input-group-text">NAME</span>
+                  <input id="jobName" type="text" class="form-control" placeholder="Nome Lavoro" aria-label="Nome Lavoro" aria-describedby="jobName">
+              </div>
+              <div class="input-group mb-3">
+                  <span class="input-group-text">ID</span>
+                  <input id="jobID" type="text" class="form-control" placeholder="ID Lavoro" aria-label="ID Lavoro" disabled>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="chiudiModificaLavoro" data-bs-dismiss="modal" data-bs-target="modalModificaLavoro">Chiudi</button>
+            <button type="button" class="btn btn-danger" id="ModificaLavoro">Modifica Lavoro</button>
+          </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+<script src="./js/main.js"></script>
+</html>
